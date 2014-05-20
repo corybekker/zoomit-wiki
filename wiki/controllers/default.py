@@ -27,7 +27,7 @@ def show():
      db.post.page_id.default = this_page.id
      form = SQLFORM(db.post).process()
      pagecomments = db(db.post.page_id==this_page.id).select()
-     return dict(page=this_page, comments=pagecomments, form=form)
+     return dict(page=this_page, comments=pagecomments, form=form, body=XML(markdown(this_page.body)))
 
 
 def edit():
